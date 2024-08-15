@@ -57,7 +57,7 @@ const server = net.createServer((socket) => {
         printBoard();
 
         if (gameState.winner) {
-            process.exit();
+            console.log(`El ganador es: ${gameState.winner}`);
         } else {
             console.log("Es tu turno.");
             myTurn = true;
