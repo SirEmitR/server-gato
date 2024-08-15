@@ -24,7 +24,10 @@ function makeMove(position) {
         gameState.winner = checkWinner();
         gameState.currentPlayer = gameState.currentPlayer === 'X' ? 'O' : 'X';
         myTurn = false;
-
+        printBoard();
+        if (gameState.winner) {
+            console.log(`El ganador es: ${gameState.winner}`);
+        }
         sendStateToPeer();
     } else {
         console.log("Movimiento inválido o no es tu turno.");
