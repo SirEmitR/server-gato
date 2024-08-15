@@ -53,10 +53,10 @@ function checkWinner() {
 const server = net.createServer((socket) => {
     socket.on('data', (data) => {
         gameState = JSON.parse(data);
+        console.clear();
         printBoard();
 
         if (gameState.winner) {
-            console.log(`El ganador es: ${gameState.winner}`);
             process.exit();
         } else {
             console.log("Es tu turno.");
@@ -84,11 +84,6 @@ process.stdin.on('data', (input) => {
     const position = parseInt(input.toString().trim(), 10);
     if (!isNaN(position) && position >= 0 && position <= 8) {
         makeMove(position);
-        printBoard();
-        if (gameState.winner) {
-            console.log(`El ganador es: ${gameState.winner}`);
-            process.exit();
-        }
     } else {
         console.log("Por favor, introduce un número entre 0 y 8.");
     }
